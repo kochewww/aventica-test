@@ -4,15 +4,28 @@ import styled from "styled-components";
 export default () => {
   const Header = styled.div`
     display: flex;
-    justify-content: center;
     align-content: center;
     border: 1px solid;
     margin: 12px 0px 12px 0px;
   `;
+  const Title = styled.h2`
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  `;
+  const Indicator = styled.span`
+    margin: 0.5rem;
+    display: flex;
+    padding: 20px;
+    background-color: grey;
+    justify-self: flex-end;
+    border-radius: 40%;
+  `;
   return (
     <div className="col-xs-12">
       <Header>
-        <h2>React app for Aventica</h2>
+        <Title>React app for Aventica</Title>
+        <Indicator>3</Indicator>
       </Header>
     </div>
   );
