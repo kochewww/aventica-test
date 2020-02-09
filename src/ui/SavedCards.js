@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
+import { Context } from "../Context";
 const Wrapper = styled.div`
   display: block;
   min-height: 10rem;
@@ -26,11 +27,12 @@ const Indicator = styled.div`
   display: inline-block;
 `;
 export default () => {
-  return (
-    <div className="col-xs-4">
+  const { savedNotes } = useContext(Context);
+  const savedCards = savedNotes.map(text => (
+    <div className="col-xs-4" key={text}>
       <Wrapper>
         <Indicator></Indicator>
-        <Text>Text</Text>
+        <Text>{text}</Text>
         <Button length="31%" marginLeft="0">
           Draft
         </Button>
@@ -39,5 +41,7 @@ export default () => {
         </Button>
       </Wrapper>
     </div>
-  );
+  ));
+  console.log(savedNotes);
+  return savedCards;
 };

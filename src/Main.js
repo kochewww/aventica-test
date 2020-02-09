@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import MainCard from "./ui/MainCard";
+import SavedCards from "./ui/SavedCards";
 const Main = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +14,7 @@ export default () => {
   return (
     <div className="col-xs-9">
       <Main>
-        <MainCard></MainCard>
+        <SavedCards></SavedCards>
       </Main>
     </div>
   );
