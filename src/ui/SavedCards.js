@@ -44,7 +44,7 @@ export default () => {
   };
   const toggleMark = clickedCard => {
     const updatedCards = savedNotes.map(card => {
-      if (card.text === clickedCard.text) {
+      if (card === clickedCard) {
         return { ...card, isCardMarked: !card.isCardMarked };
       }
 
@@ -52,8 +52,8 @@ export default () => {
     });
     setSavedNotes(updatedCards);
   };
-  const savedCards = savedNotes.map(note => (
-    <div className="col-xs-4" key={note.text}>
+  const savedCards = savedNotes.map((note, i) => (
+    <div className="col-xs-4" key={note + i}>
       <Wrapper>
         {setIndicator(note.isCardMarked)}
         <Text>{note.text}</Text>
