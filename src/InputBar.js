@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { Button } from "./ui/Button";
 import { Context } from "./Context";
-import SavedCards from "./ui/SavedCards";
 const InputBar = styled.div`
   border: 1px solid;
   height: 8rem;
@@ -25,12 +24,18 @@ export default () => {
     console.log(text);
   };
   const onDraft = e => {
-    setDraftedNotes(prevDraftedNotes => [...prevDraftedNotes, text]);
+    setDraftedNotes(prevDraftedNotes => [
+      ...prevDraftedNotes,
+      { text, isCardMarked: false }
+    ]);
     e.preventDefault();
     setText("");
   };
   const onSave = e => {
-    setSavedNotes(prevSavedNotes => [...prevSavedNotes, text]);
+    setSavedNotes(prevSavedNotes => [
+      ...prevSavedNotes,
+      { text: text, isCardMarked: false }
+    ]);
     e.preventDefault();
     setText("");
   };

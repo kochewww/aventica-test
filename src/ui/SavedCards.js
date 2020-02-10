@@ -21,22 +21,53 @@ const Text = styled.span`
 const Indicator = styled.div`
   height: 1rem;
   width: 1rem;
-  background-color: green;
+  background-color: ${props => props.color || "red"};
   margin-left: 90%;
 
   display: inline-block;
 `;
+
 export default () => {
-  const { savedNotes } = useContext(Context);
-  const savedCards = savedNotes.map(text => (
-    <div className="col-xs-4" key={text}>
+  const {
+    savedNotes,
+    draftedNotes,
+    setDraftedNotes,
+    setSavedNotes
+  } = useContext(Context);
+  const moveToDraft = movedItem => {
+    setDraftedNotes([...draftedNotes, movedItem]);
+    setSavedNotes(savedNotes.filter(note => note !== movedItem));
+  };
+  // const addProp = () =>
+  //   savedNotes.forEach(element => {
+  //     element.isCardMarked = false;
+  //   });
+  // addProp();
+  const setIndicator = isCardMarked => {
+    return isCardMarked ? <Indicator color="green" /> : <Indicator />;
+  };
+  const toggleMark = clickedCard => {
+    const updatedCards = savedNotes.map(card => {
+      if (card.text === clickedCard.text) {
+        return { ...card, isCardMarked: !card.isCardMarked };
+      }
+
+      return card;
+    });
+    setSavedNotes(updatedCards);
+    // isCardMarked
+    //   ? setMarkedCards(markedCards + 1)
+    //   : setMarkedCards(markedCards - 1);
+  };
+  const savedCards = savedNotes.map(note => (
+    <div className="col-xs-4" key={note.text}>
       <Wrapper>
-        <Indicator></Indicator>
-        <Text>{text}</Text>
-        <Button length="31%" marginLeft="0">
+        {setIndicator(note.isCardMarked)}
+        <Text>{note.text}</Text>
+        <Button onClick={() => moveToDraft(note)} length="31%" marginLeft="0">
           Draft
         </Button>
-        <Button length="50%" marginLeft="1rem">
+        <Button onClick={() => toggleMark(note)} length="50%" marginLeft="1rem">
           Mark
         </Button>
       </Wrapper>

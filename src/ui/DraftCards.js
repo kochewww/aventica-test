@@ -23,29 +23,28 @@ export default () => {
     setSavedNotes([...savedNotes, movedItem]);
     setDraftedNotes(draftedNotes.filter(note => note !== movedItem));
   };
-  const draftCards = draftedNotes.map((text, i) => (
-    <DraftCardWrapper key={i}>
+  const draftCards = draftedNotes.map((note, i) => (
+    <DraftCardWrapper key={note}>
       <TextArea
-        value={text}
+        value={note.text}
         onChange={e => {
-          draftedNotes[i] = e.target.value;
+          draftedNotes[i].text = e.target.value;
           setDraftedNotes([...draftedNotes]);
         }}
       ></TextArea>
       <Button
-        onClick={() => removeNote(text)}
+        onClick={() => removeNote(note)}
         color="red"
         length="40%"
         marginTop="-20%"
       >
         Remove
       </Button>
-      <Button onClick={() => moveToSaved(text)} color="green" length="30%">
+      <Button onClick={() => moveToSaved(note)} color="green" length="30%">
         Save
       </Button>
     </DraftCardWrapper>
   ));
-  console.log(draftedNotes);
 
   return draftCards;
 };

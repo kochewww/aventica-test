@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Context } from "./Context";
 const Header = styled.div`
   display: flex;
   align-content: center;
@@ -20,11 +21,13 @@ const Indicator = styled.span`
   border-radius: 40%;
 `;
 export default () => {
+  const { savedNotes } = useContext(Context);
+  const countMarkedNotes = savedNotes.filter(note => note.isCardMarked).length;
   return (
     <div className="col-xs-12">
       <Header>
         <Title>React app for Aventica</Title>
-        <Indicator>3</Indicator>
+        <Indicator>{countMarkedNotes}</Indicator>
       </Header>
     </div>
   );
