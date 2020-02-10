@@ -24,11 +24,9 @@ export default () => {
   const { savedNotes } = useContext(Context);
   const countMarkedNotes = savedNotes.filter(note => note.isCardMarked).length;
   return (
-    <div className="col-xs-12">
-      <Header>
-        <Title>React app for Aventica</Title>
-        <Indicator>{countMarkedNotes}</Indicator>
-      </Header>
-    </div>
+    <Header>
+      <Title>React app for Aventica</Title>
+      <Indicator>{countMarkedNotes}</Indicator>
+    </Header>
   );
 };

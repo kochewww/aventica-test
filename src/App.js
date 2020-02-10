@@ -7,13 +7,11 @@ import Main from "./Main";
 function App() {
   return (
     <div className="container">
-      <div className="row">
-        <Header />
+      <Header />
 
-        <InputBar />
-        <Main />
-        <DraftBar />
-      </div>
+      <InputBar />
+      <DraftBar />
+      <Main />
     </div>
   );
 }

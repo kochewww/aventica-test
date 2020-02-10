@@ -6,6 +6,9 @@ const InputBar = styled.div`
   border: 1px solid;
   height: 8rem;
   box-sizing: border-box;
+  width: 25%;
+  display: inline-block;
+  margin-top: -10 rem;
 `;
 const Input = styled.input`
   height: 1rem;
@@ -40,16 +43,14 @@ export default () => {
     setText("");
   };
   return (
-    <div className="col-xs-3">
-      <InputBar>
-        <Input onChange={handleChange} type="text" value={text} />
-        <Button onClick={onDraft} length="25%">
-          Draft
-        </Button>
-        <Button onClick={onSave} color="green" length="55%">
-          Save
-        </Button>
-      </InputBar>
-    </div>
+    <InputBar>
+      <Input onChange={handleChange} type="text" value={text} />
+      <Button onClick={onDraft} length="25%">
+        Draft
+      </Button>
+      <Button onClick={onSave} color="green" length="55%">
+        Save
+      </Button>
+    </InputBar>
   );
 };

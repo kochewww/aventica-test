@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   border: 1px solid;
   margin: 1rem;
   box-sizing: border-box;
-  word-wrap: break-word;
   padding: 1rem;
+  z-index: 2;
 `;
 const Text = styled.span`
   min-height: 8rem;
@@ -38,11 +38,7 @@ export default () => {
     setDraftedNotes([...draftedNotes, movedItem]);
     setSavedNotes(savedNotes.filter(note => note !== movedItem));
   };
-  // const addProp = () =>
-  //   savedNotes.forEach(element => {
-  //     element.isCardMarked = false;
-  //   });
-  // addProp();
+
   const setIndicator = isCardMarked => {
     return isCardMarked ? <Indicator color="green" /> : <Indicator />;
   };
@@ -55,9 +51,6 @@ export default () => {
       return card;
     });
     setSavedNotes(updatedCards);
-    // isCardMarked
-    //   ? setMarkedCards(markedCards + 1)
-    //   : setMarkedCards(markedCards - 1);
   };
   const savedCards = savedNotes.map(note => (
     <div className="col-xs-4" key={note.text}>
