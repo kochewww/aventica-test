@@ -10,7 +10,7 @@ const Main = styled.div`
   align-items: flex-start;
   border: 1px solid;
   min-height: 25rem;
-  width: 60%;
+  width: 64%;
   left: 29.5%;
 `;
 export default () => {
