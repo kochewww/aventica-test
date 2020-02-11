@@ -13,7 +13,7 @@ const InputBar = styled.div`
 const Input = styled.input`
   height: 1rem;
   width: 85%;
-  margin: 1rem;
+  margin: 5%;
 `;
 export default () => {
   const {
@@ -45,7 +45,7 @@ export default () => {
   return (
     <InputBar>
       <Input onChange={handleChange} type="text" value={text} />
-      <Button onClick={onDraft} length="25%">
+      <Button onClick={onDraft} length="25%" marginLeft="5%">
         Draft
       </Button>
       <Button onClick={onSave} color="green" length="55%">
